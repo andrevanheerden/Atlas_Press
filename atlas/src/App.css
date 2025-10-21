@@ -1,6 +1,11 @@
 .App {
-  text-align: center;
+  background-color: #E8D5B7;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 
 .App-logo {
   height: 40vmin;
