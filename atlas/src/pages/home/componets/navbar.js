@@ -1,45 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../home.css";
 import logo from "../../../assets/images/logo.png";
 
 function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
+  const navigate = useNavigate();
 
   const menuData = {
     Books: {
       columns: [
         {
-          title: "Trending",
+          title: "My Books",
           items: [
-            "Trending This Week",
-            "Romantasy Books To Start Reading Now",
-            "Page-Turning Series To Start Now",
-            "Books to Cope With Anxiety",
-            "Popular Large Print Books",
-            "Anti-Racist Resources",
-          ],
-        },
-        {
-          title: "Staff Picks",
-          items: ["Romance", "Mystery & Thriller", "Fiction", "Memoir & Fiction"],
-        },
-        {
-          title: "Features & Interviews",
-          items: [
-            "Emma Brodie Interview",
-            "James Ellroy Interview",
-            "Qian Julie Wang Interview",
-            "Deepak Chopra Essay",
-            "How Can I Get Published?",
-          ],
-        },
-        {
-          title: "For Book Clubs",
-          items: [
-            "Reese’s Book Club",
-            "Oprah’s Book Club",
-            "Guide: Tell Me Everything",
-            "Guide: James",
+            "Book 1",
           ],
         },
       ],
@@ -48,7 +22,7 @@ function Navbar() {
       columns: [
         {
           title: "Discover",
-          items: ["Kids’ Bestsellers", "Picture Books", "Middle Grade Reads"],
+          items: ["Kids' Bestsellers", "Picture Books", "Middle Grade Reads"],
         },
         {
           title: "For Parents & Teachers",
@@ -60,7 +34,7 @@ function Navbar() {
       columns: [
         {
           title: "Top Picks",
-          items: ["Most Read", "Editor’s Choice", "Award Winners"],
+          items: ["Most Read", "Editor's Choice", "Award Winners"],
         },
       ],
     },
@@ -68,6 +42,12 @@ function Navbar() {
 
   const handleMouseEnter = (menu) => setActiveMenu(menu);
   const handleMouseLeave = () => setActiveMenu(null);
+
+  const handleBookClick = (bookName) => {
+    if (bookName === "Book 1") {
+      navigate("/books");
+    }
+  };
 
   return (
     <div className="navbar-wrapper" onMouseLeave={handleMouseLeave}>
@@ -104,7 +84,13 @@ function Navbar() {
                 <h4>{col.title}</h4>
                 <ul>
                   {col.items.map((item, i) => (
-                    <li key={i}>{item}</li>
+                    <li 
+                      key={i} 
+                      onClick={() => handleBookClick(item)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
